@@ -59,7 +59,7 @@ python manage.py runserver
 ### 2. Скопіюйте .env файл
 
 ```bash
-cp .env.example .env
+cp .env .env
 ```
 
 Відредагуйте `.env` файл та встановіть потрібні значення.
