@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
-
 class Post(models.Model):
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -10,6 +9,7 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     published = models.BooleanField(default=False)
+    likes = models.IntegerField(default=0)
     
     class Meta:
         ordering = ['-created_at']
