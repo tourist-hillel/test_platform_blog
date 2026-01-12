@@ -33,6 +33,7 @@ class Comment(models.Model):
         return f'Comment by {self.author_name} on {self.post}'
 
 
+
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='post_likes')
@@ -43,3 +44,16 @@ class Like(models.Model):
 
     def __str__(self):
         return f"{self.user} liked {self.post}"
+
+
+class FavoritePost(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='favorite_post')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    added_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ['added_at']
+        
+    def __str__(self):
+        return f'Post {self.post.title} added to favorite by {self.user}'
+    
